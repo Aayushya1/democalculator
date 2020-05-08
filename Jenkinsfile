@@ -4,6 +4,9 @@ pipeline {
         registryCredential = 'docker-hub'
     }
   agent any
+  options {
+      skipDefaultCheckout(true)
+  }
   stages {
     stage('Clone GIT Repository') {
           steps{
