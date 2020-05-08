@@ -25,16 +25,16 @@ public class AppTest
         int a = 15;
         int b = 20;
         int expectedResult = 35;
-        int result = calculator.addition(a, b);
+        long result = calculator.addition(a, b);
 
         Assert.assertEquals(expectedResult, result);
     }
     @Test
-    public void testsub() {
+    public void testsubt() {
         int a = 15;
         int b = 20;
         int expectedResult = 35;
-        int result = calculator.subtraction(a, b);
+        long result = calculator.subtraction(a, b);
 
         Assert.assertEquals(expectedResult, result);
     }
