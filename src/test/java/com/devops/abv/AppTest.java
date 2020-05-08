@@ -33,7 +33,7 @@ public class AppTest
     public void testsubt() {
         int a = 15;
         int b = 20;
-        int expectedResult = 35;
+        int expectedResult = 5;
         long result = calculator.subtraction(a, b);
 
         Assert.assertEquals(expectedResult, result);
