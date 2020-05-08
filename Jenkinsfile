@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        registry = "abvroot/calculatorV2"
+        registry = "abvroot/calculatorv2"
         registryCredential = 'docker-hub'
     }
   agent any
