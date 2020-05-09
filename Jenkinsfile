@@ -10,41 +10,53 @@ pipeline {
   stages {
     stage('Clone GIT Repository') {
           steps{
-            git 'https://github.com/Aayushya1/democalculator.git'
-       }
+                logstash{
+                    git 'https://github.com/Aayushya1/democalculator.git'
+                }
+          }
     }
     stage('Clean') {
         steps{
+            logstash{
              sh 'mvn clean'
              echo "clean"
+             }
         }
     }
 
     stage('Compile') {
         steps{
+            logstash{
              sh 'mvn package'
              echo "compile"
+             }
         }
     }
     stage('Test') {
         steps{
+            logstash {
            sh 'mvn test'
            echo "test"
+           }
         }
     }
 
     stage('Deploy Image to Docker Hub') {
         steps{
+            logstash{
             script{
+
                dockerImage = docker.build registry + ":calc"
                docker.withRegistry( '', registryCredential){
                    dockerImage.push()
                }
             }
+            }
         }
     }
     stage('Execute Rundeck job') {
              steps {
+             logstash{
                script {
                  step([$class: "RundeckNotifier",
                        includeRundeckLogs: true,
@@ -53,6 +65,7 @@ pipeline {
                        shouldFailTheBuild: true,
                        shouldWaitForRundeckJob: true,
                        tailLog: true])
+               }
                }
              }
     }
